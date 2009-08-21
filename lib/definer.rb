@@ -17,9 +17,10 @@ module FRuby
       private
       def append_condition(method_name, condition, &block)
         condition_method_name = define_condition_method(method_name, &block)
-
-        old_method_name = Utils::random_string(method_name)
+        old_method_name = Utils::rand_condition_method_name(method_name)
         alias_method old_method_name, method_name
+        private old_method_name
+        
         define_method method_name do |*args|
           if condition.call(*args)
             method(condition_method_name).call(*args)
@@ -43,9 +44,9 @@ module FRuby
       end
 
       def define_condition_method(method_name, &block)
-        condition_method_name = Utils::random_string(method_name)
+        condition_method_name = Utils::rand_condition_method_name(method_name)
         define_method(condition_method_name, &block)
-        private condition_method_name
+        private condition_method_name.to_sym
         condition_method_name
       end
     end

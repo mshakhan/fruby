@@ -27,5 +27,9 @@ describe FRuby::Definer do
   it "Should return :zero string if 0 passed" do
     @inst.test(0).should == :zero
   end
+
+  it "Condition methods should be private" do
+    DefinerTest.public_instance_methods.grep(/^test/).size.should == 1
+  end
 end
 

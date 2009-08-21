@@ -1,8 +1,8 @@
 module FRuby
   module Utils extend self
-    def random_string(prefix = '', size = 8)
+    def rand_condition_method_name(prefix, size = 8)
       alphabet = ('a'..'z').to_a + ('A'..'Z').to_a + (0..9).to_a
-      "#{prefix}#{Array.new(size) { alphabet[rand(alphabet.size)] }.join}"
+      "__#{prefix}_condition_#{Array.new(size) { alphabet[rand(alphabet.size)] }.join}__"
     end
 
     def has_instance_method?(obj, method_name)
