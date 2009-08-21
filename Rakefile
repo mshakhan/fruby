@@ -3,23 +3,26 @@ require 'rake'
 require 'rake/clean'
 require 'rake/gempackagetask'
 require 'rake/rdoctask'
+require 'lib/version'
 
-task :spec do
-  spec_path = ENV['SPEC_PATH'] || 'spec'
-  system("spec #{spec_path} -c")
-end
+GEM_NAME = 'fruby'
 
 spec = Gem::Specification.new do |s|
-  s.name = 'fruby'
-  s.version = '0.0.1'
+  s.name = GEM_NAME
+  s.version = FRuby::VERSION
   s.has_rdoc = true
-  s.extra_rdoc_files = ['README', 'LICENSE']
-  s.summary = 'Functional programming in ruby'
+  s.extra_rdoc_files = ['README.rdoc', 'LICENSE']
+  s.summary = 'Some functional programming features for ruby'
   s.description = s.summary
   s.author = 'mshakhan'
   s.email = 'mshakhan@gmail.com'
-  s.files = %w(LICENSE README Rakefile) + Dir.glob("{lib,spec}/**/*")
+  s.files = %w(LICENSE README.rdoc Rakefile) + Dir.glob("{lib,spec}/**/*")
   s.require_path = "lib"
+
+  s.add_dependency 'rake'
+  s.add_dependency 'rspec'
+    
+  s.required_ruby_version = ">= 1.8.4"
 end
 
 Rake::GemPackageTask.new(spec) do |p|
@@ -29,10 +32,23 @@ Rake::GemPackageTask.new(spec) do |p|
 end
 
 Rake::RDocTask.new do |rdoc|
-  files =['README', 'LICENSE', 'lib/**/*.rb']
+  files =['README.rdoc', 'LICENSE', 'lib/**/*.rb']
   rdoc.rdoc_files.add(files)
-  rdoc.main = "README" # page to start on
+  rdoc.main = "README.rdoc"
   rdoc.title = "fruby Docs"
-  rdoc.rdoc_dir = 'doc/rdoc' # rdoc output folder
+  rdoc.rdoc_dir = 'doc/rdoc'
   rdoc.options << '--line-numbers'
+end
+
+desc 'Run specs'
+task :spec do
+  spec_path = ENV['SPEC_PATH'] || 'spec'
+  system("spec #{spec_path} -c")
+end
+
+desc "Generate *.gemspec file"
+task :gemspec do
+  path = File.join(File.dirname(__FILE__), "#{GEM_NAME}.gemspec")
+  puts %{Writing "#{path}"}
+  File.open(path, "w") { |file| file.write(spec.to_ruby) }
 end
