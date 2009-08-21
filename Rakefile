@@ -49,7 +49,7 @@ end
 desc "Generate *.gemspec file"
 task :gemspec do
   gemspec = %{require 'rubygems' unless defined?(Gem)
-spec = #{spec.to_ruby}}
+spec = #{spec.to_ruby.to_s.sub(/^#.*$/, '')}} # remove encoding comment
   path = File.join(File.dirname(__FILE__), "#{GEM_NAME}.gemspec")
   puts %{Writing "#{path}"}
   File.open(path, "w") { |file| file.write(gemspec) }

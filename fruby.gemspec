@@ -1,6 +1,5 @@
-
-    require 'rubygems' unless defined?(Gem)
-    spec = # -*- encoding: utf-8 -*-
+require 'rubygems' unless defined?(Gem)
+spec = 
 
 Gem::Specification.new do |s|
   s.name = %q{fruby}
@@ -35,5 +34,3 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<rspec>, [">= 0"])
   end
 end
-
-  
