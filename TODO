@@ -1,2 +1,3 @@
  T Think about empty parameters matching
  F Definitions order should not affect the result
+ T Options to defun: method name and private(true/false) 

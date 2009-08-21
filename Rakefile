@@ -35,7 +35,7 @@ Rake::RDocTask.new do |rdoc|
   files =['README.rdoc', 'LICENSE', 'lib/**/*.rb']
   rdoc.rdoc_files.add(files)
   rdoc.main = "README.rdoc"
-  rdoc.title = "fruby Docs"
+  rdoc.title = "FRuby Docs"
   rdoc.rdoc_dir = 'doc/rdoc'
   rdoc.options << '--line-numbers'
 end
