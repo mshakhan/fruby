@@ -4,7 +4,7 @@ Some functional programming features for ruby.
 
 == Usage
 
-Now implemented only *defun* method. You can use it like this:
+Now implemented only *define* method. You can use it like this:
 
   module Math
     class << self
