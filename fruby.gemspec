@@ -1,6 +1,5 @@
-# -*- encoding: utf-8 -*-
-
-Gem::Specification.new do |s|
+require 'rubygems' unless defined?(Gem)
+spec = Gem::Specification.new do |s|
   s.name = %q{fruby}
   s.version = "0.0.1"
 

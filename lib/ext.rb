@@ -1,4 +1,3 @@
-# Hello, ActiveResource =)
 class Object
   def blank?
     respond_to?(:empty?) ? empty? : !self
