@@ -1,3 +1,19 @@
-== fruby
+== Description
 
-You should document your project here.
+Some functional programming features for ruby.
+
+== Usage
+
+Now implemented only *defun* method. You can use it like this:
+<pre>
+  class Test
+    defun(:test)            { :empty }
+    defun(:test, Fixnum)    { |n| n }
+    defun(:test, 0)         { :zero }
+  end
+
+  t = test.new
+  t.test        #=> :empty
+  t.test(0)     #=> :zero
+  t.test(42)    #=> 42
+</pre>
