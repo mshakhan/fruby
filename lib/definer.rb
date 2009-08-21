@@ -19,9 +19,9 @@ module FRuby
       #
       #   class Test
       #     include FRuby::Definer   
-      #     defun(:my_method)             { 'empty args' }
-      #     defun(:my_method, Fixnum)     { |n| n }
-      #     defun(:my_method, 0)          { 'zero' }
+      #     define(:my_method)             { 'empty args' }
+      #     define(:my_method, Fixnum)     { |n| n }
+      #     define(:my_method, 0)          { 'zero' }
       #   end
       #   
       #   c = C.new
@@ -34,7 +34,7 @@ module FRuby
       # * <tt>name</tt> - Method name. Should be a Symbol or a String
       # * <tt>formal_args</tt> - Method's formal parameters. Might be a classes or a values
       # * <tt>&block</tt> - Method definition
-      def defun(name, *formal_args, &block)
+      def define(name, *formal_args, &block)
         define_or_append_condition(name, lambda { |*args| 
             FRuby::Matcher::match(formal_args, args)
           }, &block)

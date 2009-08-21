@@ -9,9 +9,9 @@ Now implemented only *defun* method. You can use it like this:
   module Math
     class << self
       include FRuby::Definer
-      defun(:fact, Fixnum) { |n| n * fact(n - 1) }
-      defun(:fact, 0) { 1 }
-      defun(:fact, 1) { 1 }
+      define(:fact, Fixnum) { |n| n * fact(n - 1) }
+      define(:fact, 0) { 1 }
+      define(:fact, 1) { 1 }
     end
   end
 

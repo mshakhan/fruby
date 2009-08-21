@@ -3,9 +3,9 @@ require File.join(File.dirname(__FILE__), '..', 'lib', 'fruby')
 class DefinerTest
   include FRuby::Definer
 
-  defun(:test) { :empty } # empty args (no args, nil, [], [nil])
-  defun(:test, String) { |s| s }
-  defun(:test, 0) { :zero }
+  define(:test) { :empty } # empty args (no args, nil, [], [nil])
+  define(:test, String) { |s| s }
+  define(:test, 0) { :zero }
 end
 
 
