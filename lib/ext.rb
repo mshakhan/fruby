@@ -1,14 +1,4 @@
-# Yep, I am not satisfied by standart ruby features =)
-module Kernel
-  def __DIR__
-    File.dirname(__FILE__)
-  end
-
-  def alias_method(new, old)
-    eval ":#{new} :#{old}"
-  end
-end
-
+# Hello, ActiveResource =)
 class Object
   def blank?
     respond_to?(:empty?) ? empty? : !self

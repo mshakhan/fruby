@@ -4,19 +4,19 @@ module FRuby
       match_by_value(p1, p2) or match_by_class(p1, p2)
     end
 
+    def match_by_value(p1, p2)
+      if p1.is_a?(Array) and p2.is_a?(Array)
+        match_arrays_by_value(p1, p2)
+      else
+        p1 == p2 || (p1.blank? && p2.blank?)
+      end
+    end
+
     def match_by_class(cls, p)
       if cls.is_a?(Array) and p.is_a?(Array)
         match_arrays_by_class(cls, p)
       else
         p.present? and cls == p.class
-      end
-    end
-
-    def match_by_value(p1, p2)
-      if p1.is_a?(Array) and p2.is_a?(Array)
-        match_arrays_by_value(p1, p2)
-      else
-        p1 == p2
       end
     end
 

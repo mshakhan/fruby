@@ -3,7 +3,11 @@ require 'rake'
 require 'rake/clean'
 require 'rake/gempackagetask'
 require 'rake/rdoctask'
-require 'rake/testtask'
+
+task :spec do
+  spec_path = ENV['SPEC_PATH'] || 'spec'
+  system("spec #{spec_path} -c")
+end
 
 spec = Gem::Specification.new do |s|
   s.name = 'fruby'
@@ -31,8 +35,4 @@ Rake::RDocTask.new do |rdoc|
   rdoc.title = "fruby Docs"
   rdoc.rdoc_dir = 'doc/rdoc' # rdoc output folder
   rdoc.options << '--line-numbers'
-end
-
-Rake::TestTask.new do |t|
-  t.test_files = FileList['test/**/*.rb']
 end
