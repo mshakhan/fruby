@@ -48,7 +48,9 @@ end
 
 desc "Generate *.gemspec file"
 task :gemspec do
+  gemspec = %{require 'rubygems' unless defined?(Gem)
+spec = #{spec.to_ruby}}
   path = File.join(File.dirname(__FILE__), "#{GEM_NAME}.gemspec")
   puts %{Writing "#{path}"}
-  File.open(path, "w") { |file| file.write(spec.to_ruby) }
+  File.open(path, "w") { |file| file.write(gemspec) }
 end

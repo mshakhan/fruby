@@ -1,10 +1,13 @@
-require 'rubygems' unless defined?(Gem)
-spec = Gem::Specification.new do |s|
+
+    require 'rubygems' unless defined?(Gem)
+    spec = # -*- encoding: utf-8 -*-
+
+Gem::Specification.new do |s|
   s.name = %q{fruby}
   s.version = "0.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["mshakhan"]
+  s.authors = ["Mikhail Shakhanov"]
   s.date = %q{2009-08-21}
   s.description = %q{Some functional programming features for ruby}
   s.email = %q{mshakhan@gmail.com}
@@ -32,3 +35,5 @@ spec = Gem::Specification.new do |s|
     s.add_dependency(%q<rspec>, [">= 0"])
   end
 end
+
+  
