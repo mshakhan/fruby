@@ -7,6 +7,7 @@ Some functional programming features for ruby.
 Now implemented only *defun* method. You can use it like this:
 
   class Test
+    include FRuby::Definer
     defun(:test)            { :empty }
     defun(:test, Fixnum)    { |n| n }
     defun(:test, 0)         { :zero }
