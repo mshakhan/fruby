@@ -6,14 +6,13 @@ Some functional programming features for ruby.
 
 Now implemented only *defun* method. You can use it like this:
 
-  class Test
-    include FRuby::Definer
-    defun(:test)            { :empty }
-    defun(:test, Fixnum)    { |n| n }
-    defun(:test, 0)         { :zero }
+  module Math
+    class << self
+      include FRuby::Definer
+      defun(:fact, Fixnum) { |n| n * fact(n - 1) }
+      defun(:fact, 0) { 1 }
+      defun(:fact, 1) { 1 }
+    end
   end
 
-  t = test.new
-  t.test        #=> :empty
-  t.test(0)     #=> :zero
-  t.test(42)    #=> 42
+  Math::fact(5) #=> 120
